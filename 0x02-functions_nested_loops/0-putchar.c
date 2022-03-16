@@ -1,12 +1,12 @@
-#include <unistd.h>
-#include <stdio.h>
+#include "main.h"
 /**
  * main - print _putchar to the sreen
  *
  * Return: Always 0 (success)
  */
-int _putchar(char c)
+int main(void)
 {
 
-	return(write(1,&c, 1));
+	_putchar('_putchar');
+	return (0);
 }
