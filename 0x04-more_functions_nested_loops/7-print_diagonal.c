@@ -11,6 +11,22 @@ void print_diagonal(int n)
 	}
 	else
 	{
+<<<<<<< HEAD
 		
+=======
+		int i, j;
+
+		for (i = 0; i < n; i++)
+		{
+			for (j = 0; j < n; j++)
+			{
+				if (j == i)
+					_putchar('\\');
+				else if (j < i)
+					_putchar(' ');
+			}
+			_putchar('\n');
+		}
+>>>>>>> 07cdbe1b4aa3b5463e788e744525a2682084b375
 	}
 }
