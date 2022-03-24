@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
  * _strcat - appends the src string to the dest string,
  * overwriting the terminating null byte.
@@ -6,6 +7,7 @@
  * @src: string to join
  * Return: a pointer to the resulting string dest
  */
+
 char *_strcat(char *dest, char *src)
 {
 	int i, j;
