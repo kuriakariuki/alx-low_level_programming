@@ -1,10 +1,5 @@
 #include <stdio.h>
 
-/**
- * main - prints a[2] = 98
- * Return: always 0 (success)
- */
-
 int main(void)
 {
 	int n;
@@ -22,7 +17,7 @@ int main(void)
 	 * - you are not allowed to code anything else than this line of code
 	 */
 	*(p + 5) = 98;
-	/* this print 98\n */
+	/*...so that this prints 98\n */
 	printf("a[2] = %d\n", a[2]);
 	return (0);
 }
