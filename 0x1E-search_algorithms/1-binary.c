@@ -1,71 +1,53 @@
 #include "search_algos.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
+
+void print_searched(int *array, size_t left, size_t right);
 
 /**
- * binary_search - searches for a value in an array of
- * integers using the Binary search algorithm
- * @array: array to search the value in
- * @size: size of the array
- * @value: value to look for
- *
- * Return: the index of the found value,
- * or -1 if not found
+ * binary_search - Binary search implemented
+ * @array: Pointer at the first element of an array of integers
+ * @size: Size of the array
+ * @value: Search value in the array
+ * Return: Integer with the index of the searched value or -1
  */
 int binary_search(int *array, size_t size, int value)
 {
-	if (!array || size == 0)
+	size_t left, right, mid;
+
+	if (array == NULL)
 		return (-1);
 
-	return (help_binary(array, value, 0, size - 1));
-}
-
-/**
- * help_binary - searches for a value in an array of
- * integers using recursion
- * @array: array to search the value in
- * @value: value to look for
- * @lo: index of the low bound
- * @hi: index of the high bound
- *
- * Return: the index of the found value,
- * or -1 if not found
- */
-int help_binary(int *array, int value, size_t lo, size_t hi)
-{
-	size_t mid;
-
-	array_print(array, lo, hi);
-	if (hi == lo && array[lo] != value)
-		return (-1);
-
-	mid = ((hi - lo) / 2) + lo;
-	if (array[mid] == value)
-		return (mid);
-	if (array[mid] < value)
-		return (help_binary(array, value, mid + 1, hi));
-	if (array[mid] > value)
-		return (help_binary(array, value, lo, mid - 1));
+	left = 0;
+	right = size - 1;
+	while (left <= right)
+	{
+		mid = left + (right - left) / 2;
+		print_searched(array, left, right);
+		if (array[mid] == value)
+			return (mid);
+		if (array[mid] < value)
+			left = mid + 1;
+		else
+			right = mid - 1;
+	}
 	return (-1);
 }
 
 /**
- * array_print - prints an array
- * @array: array to print
- * @lo: index of the low bound
- * @hi: index of the high bound
+ * print_searched - Print elements of given array
+ * @array: Pointer at the first element of an array of integers
+ * @left: Pointer to the left index
+ * @right: Pointer to the right index
  */
-void array_print(int *array, size_t lo, size_t hi)
+void print_searched(int *array, size_t left, size_t right)
 {
 	size_t i;
+	char *comma = "";
 
 	printf("Searching in array: ");
-	for (i = lo; i <= hi; i++)
+	for (i = left; i <= right; i++)
 	{
-		printf("%d", array[i]);
-		if (i < hi)
-			printf(", ");
+		printf("%s%d", comma, array[i]);
+		comma = ", ";
 	}
 	printf("\n");
 }
